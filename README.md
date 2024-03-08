@@ -18,6 +18,7 @@ Then install the dependencies, set up the mqtt credentials, serial port and star
 git clone https://github.com/Dravelz-21/door-lock.git
 cd door-lock
 npm i --save
+cd raspberry
 node main.js 
 ```
 
