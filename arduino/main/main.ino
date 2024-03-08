@@ -1,8 +1,8 @@
 #include <MFRC522.h>
 #include <SPI.h>
 
-MFRC522 mfrc522(10, 9);
-const int relay = 2;
+MFRC522 mfrc522(10, 9);   // RFID Scanner https://github.com/miguelbalboa/rfid
+const int relay = 2;  // Relay PIN
 void setup() {
     Serial.begin(9600);
     SPI.begin();
@@ -36,7 +36,7 @@ void rfid() {
   if(uid=="") // UUID of rfid cards that are allowed
   {
     unlock();
-    delay(5000);
+    delay(30000);  // How long the relay should stay open (ms)
     lock();
   }
   else
@@ -48,7 +48,7 @@ void rfid() {
   }
 }
 
-void rpi(){
+void rpi(){   // handle commands from raspberry pi
     if(Serial.available()){
       String data = Serial.readStringUntil('\n');
       if(data == "unlock"){
